@@ -1,0 +1,60 @@
+.form {
+  h3 {
+    text-align: center;
+    margin-bottom: 1rem;
+  }
+
+  input {
+    height: 2rem;
+    margin-right: 1rem;
+    width: 70%;
+    border-radius: 0.25rem;
+    border: none;
+  }
+
+  button[type="submit"] {
+    width: 7rem;
+    height: 2rem;
+    background: var(--red-400);
+    border-radius: 0.25rem;
+    color: var(--gray-50);
+    border: none;
+    font-size: 1rem;
+    font-weight: 600;
+    background: var(--green-400);
+  }
+}
+
+.closeButton {
+  position: absolute;
+  font-weight: 600;
+  right: 0.5rem;
+  top: 0.5rem;
+  height: 1.5rem;
+  width: 1.5rem;
+  border-radius: 0.1rem;
+  border: none;
+  background-color: var(--red-400);
+}
+
+.results {
+  display: flex;
+  flex-direction: column;
+  margin-top: 1.5rem;
+
+  p {
+    margin: 0.2rem 0rem
+  }
+
+  p:last-of-type {
+    margin-bottom: 1rem;
+  }
+}
+
+.image {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  align-self: center;
+  overflow: visible;
+}

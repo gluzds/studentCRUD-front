@@ -1,0 +1,21 @@
+.image {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  align-self: center;
+  overflow: hidden;
+  max-width: 1080px;
+  max-height: 720px;
+}
+
+.closeButton {
+  position: absolute;
+  font-weight: 600;
+  right: 0.5rem;
+  top: 0.5rem;
+  height: 1.5rem;
+  width: 1.5rem;
+  border-radius: 0.1rem;
+  border: none;
+  background-color: var(--red-400);
+}
