@@ -18,13 +18,13 @@ export function NewStudentModal(props) {
   };
 
   async function handleCreateNewStudent(e) {
+	e.preventDefault();
     const formData = new FormData();
     formData.append('photo', image);
     formData.append('name', name);
     formData.append('address', address);
     if (name === "" || address === "" || image === undefined) {
       toast.error("Todos campos são obrigatórios.", { theme: "dark" })
-      e.preventDefault()
     } else {
       api({
         url: 'students',
@@ -32,6 +32,10 @@ export function NewStudentModal(props) {
         data: formData,
         headers: {
           'Content-Type': 'multipart/form-data'
+        }
+      }).then((response) => {
+        if (response.status === 201) {
+          toast.success("Estudante criado com sucesso!", { theme: "dark" });
         }
       }).catch((error) => {
         toast.error("Erro ao criar estudante: " + error, { theme: "dark" });
