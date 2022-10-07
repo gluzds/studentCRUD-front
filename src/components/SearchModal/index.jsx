@@ -27,6 +27,7 @@ export function SearchModal(props) {
         toast.error("Aconteceu um erro inesperado.", { theme: "dark" })
       }
     })
+    setStudentId("");
   }
   return (
     <Modal
