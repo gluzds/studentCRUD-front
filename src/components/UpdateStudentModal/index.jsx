@@ -45,6 +45,7 @@ export function UpdateStudentModal(props) {
       }).then((response) => {
         if (response.status === 201) {
           toast.success("Estudante alterado com sucesso!", { theme: "dark" });
+          props.handleCloseModal();
         }
       }).catch((error) => {
         toast.error("Erro ao atualizar estudante: " + error, { theme: "dark" });

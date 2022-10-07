@@ -9,16 +9,15 @@ Modal.setAppElement('#__next');
 export function DeleteConfirmationModal(props) {
 
   async function handleDeleteStudent(event) {
-    api.delete(`/students/${props.student.id}`).then((response) => {
+    event.preventDefault();
+    await api.delete(`/students/${props.student.id}`).then((response) => {
       if (response.status === 200)
         toast.success("Estudante deletado com sucesso!", { theme: "dark" });
+        props.handleCloseModal();
     }
     ).catch((error) => {
       toast.error("Erro ao deletar: " + error, { theme: "dark" })
     })
-    console.log(props)
-    event.preventDefault();
-    props.handleCloseModal();
   }
 
   return (

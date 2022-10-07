@@ -36,10 +36,10 @@ export function NewStudentModal(props) {
       }).then((response) => {
         if (response.status === 201) {
           toast.success("Estudante criado com sucesso!", { theme: "dark" });
+          props.handleCloseModal();
         }
       }).catch((error) => {
         toast.error("Erro ao criar estudante: " + error, { theme: "dark" });
-        e.preventDefault();
       })
     }
   }
