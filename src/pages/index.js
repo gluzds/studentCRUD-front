@@ -28,7 +28,7 @@ export default function Home() {
           <BsSearch size={12} /> Buscar
         </button>
       </div>
-      <StudentsTable />
+      <StudentsTable newStudentModalIsOpen={newStudentModalIsOpen}/>
       <NewStudentModal
         handleCloseModal={() => setNewStudentModalIsOpen(false)}
         handleOpenModal={() => setNewStudentModalIsOpen(true)}

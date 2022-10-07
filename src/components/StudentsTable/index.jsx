@@ -19,7 +19,7 @@ export function StudentsTable(props) {
     api.get('/students').then(response =>
       setStudents(response.data)
     )
-  }, [deleteStudentModalIsOpen])
+  }, [deleteStudentModalIsOpen, updateStudentModalIsOpen, props.newStudentModalIsOpen])
 
   function handleUpdateStudent(obj) {
     setCurrentStudent(obj);

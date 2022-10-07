@@ -3,6 +3,8 @@ import styles from './styles.module.scss';
 import Image from 'next/image'
 import { useState, useEffect } from 'react';
 import { api } from '../../services/api';
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 Modal.setAppElement('#__next');
 
@@ -24,13 +26,13 @@ export function UpdateStudentModal(props) {
   };
 
   async function handleUpdateStudent(e) {
+    e.preventDefault()
     const formData = new FormData();
     formData.append('photo', image);
     formData.append('name', name);
     formData.append('address', address);
     if (name === "" || address === "") {
       toast.error("Nome e endereço obrigatório.", { theme: "dark" })
-      e.preventDefault()
     } else {
       const url = `students/` + props.student.id
       api({
@@ -40,32 +42,12 @@ export function UpdateStudentModal(props) {
         headers: {
           'Content-Type': 'multipart/form-data'
         }
-      }).catch((error) => {
-        toast.error("Erro ao atualizar estudante: " + error, { theme: "dark" });
-        e.preventDefault();
-      })
-    }
-  }
-
-  async function handleCreateNewStudent(e) {
-    const formData = new FormData();
-    formData.append('photo', image);
-    formData.append('name', name);
-    formData.append('address', address);
-    if (name === "" || address === "") {
-      toast.error("Nome e endereço obrigatório.", { theme: "dark" })
-      e.preventDefault()
-    } else {
-      api({
-        url: 'students',
-        method: "POST",
-        data: formData,
-        headers: {
-          'Content-Type': 'multipart/form-data'
+      }).then((response) => {
+        if (response.status === 201) {
+          toast.success("Estudante alterado com sucesso!", { theme: "dark" });
         }
       }).catch((error) => {
-        toast.error("Erro ao criar estudante: " + error, { theme: "dark" });
-        e.preventDefault();
+        toast.error("Erro ao atualizar estudante: " + error, { theme: "dark" });
       })
     }
   }
