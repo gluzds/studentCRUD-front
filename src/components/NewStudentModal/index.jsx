@@ -1,6 +1,6 @@
 import Modal from 'react-modal';
 import styles from './styles.module.scss';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { api } from '../../services/api';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -18,7 +18,7 @@ export function NewStudentModal(props) {
   };
 
   async function handleCreateNewStudent(e) {
-	e.preventDefault();
+    e.preventDefault();
     const formData = new FormData();
     formData.append('photo', image);
     formData.append('name', name);
@@ -36,6 +36,9 @@ export function NewStudentModal(props) {
       }).then((response) => {
         if (response.status === 201) {
           toast.success("Estudante criado com sucesso!", { theme: "dark" });
+          setName("")
+          setAddress("")
+          setImage()
           props.handleCloseModal();
         }
       }).catch((error) => {
